@@ -5,7 +5,7 @@ const initialItems = {
   itemsAdded: ''
 }
 
-export default cartReducer = (state = initialItems, action) => {
+const cartReducer = (state = initialItems, action) => {
   switch (action.type) {
     case BUY_ITEM:
       return {
@@ -17,3 +17,5 @@ export default cartReducer = (state = initialItems, action) => {
       return state;
   }
 }
+
+export default cartReducer
