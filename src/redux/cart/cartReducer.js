@@ -1,8 +1,10 @@
 import { BUY_ITEM } from "./cartTypes";
+import { addItem } from "./cartUtils";
 
 const initialItems = {
-  prductName: '',
-  itemsAdded: ''
+  index: 0,
+  cart: [],
+  uniqCart: [],
 }
 
 const cartReducer = (state = initialItems, action) => {
@@ -10,9 +12,10 @@ const cartReducer = (state = initialItems, action) => {
     case BUY_ITEM:
       return {
         ...state,
-        productName: state.prductName,
-        itemsAdded: state.itemsAdded + action.payload
-      }
+        index: state.index + 1,
+        cart: [...state.cart, addItem(action.name, action.image, action.price)],
+        uniqCart: Array.from(state.cart.reduce((m, t)=> m.set(t.place, t), new Map()).values())
+      };
     default:
       return state;
   }

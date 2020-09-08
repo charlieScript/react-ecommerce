@@ -1,18 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import store from './redux/store';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
+import Header from './components/Header';
+// import Cart from './components/Cart';
+import Home from './components/Home';
 import Cart from './components/Cart';
 
-
 function App() {
- 
-
   return (
-    <Provider store={store}>
-      <div className="App">
-        <Cart />
-      </div>
-    </Provider>
+    <Router>
+      <Switch>
+        <Provider store={store}>
+          <div className="App">
+            <Header />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/cart' component={Cart} />
+          </div>
+        </Provider>
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import cakeReducer from './cart/cartReducer'
 

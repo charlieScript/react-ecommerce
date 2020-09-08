@@ -1,9 +1,10 @@
 import { BUY_ITEM } from "./cartTypes";
 
-export const buyItem = (num, productName) => {
+export const addToCart = (name, image, price) => {
   return {
     type: BUY_ITEM,
-    payload: num,
-    productName
+    name,
+    image,
+    price,
   }
 }
