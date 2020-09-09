@@ -13,7 +13,7 @@ const cartReducer = (state = initialItems, action) => {
       return {
         ...state,
         index: state.index + 1,
-        cart: [...state.cart, addItem(action.name, action.image, action.price)],
+        cart: [...state.cart, addItem(action.name, action.image, action.price, action.items)],
         uniqCart: Array.from(state.cart.reduce((m, t)=> m.set(t.place, t), new Map()).values())
       };
     default:
