@@ -3,25 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/cart/cartActions';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { addItem } from '../redux/cart/cartUtils';
 
 function Productdetails({ location }) {
-  const cart = useSelector(state => state.cart)
+  const [shop, setShop] = useState({});
+  const cart = useSelector((state) => state.cart);
   const { state } = location;
   const dispatch = useDispatch();
-  const [num, setNum ] = useState('0')
+  const [num, setNum] = useState(0);
 
-  function add(name, image, price, items) {
-    dispatch(addToCart(name, image, price, items));
+  function add(name, image, price, id, count) {
+    setShop(name, image, price, id, count)
+    dispatch(addToCart(shop))
   }
 
-  useEffect(() => {
-    setNum(cart[state.id])
-    console.log(state, cart[state.id])
-  }, [])
+  // useEffect(() => {
+  //   setNum(cart[state.id])
+  //   console.log(state, cart[state.id])
+  // }, [])
 
   function submitToCart(e) {
-    e.preventDefault()
-    add(state.name, state.image, state.price, num)
+    e.preventDefault();
+    add(state.name, state.image, state.price, state.id, state.count);
   }
   return (
     <div className="px-32 py-8 grid grid-cols-2 col-gap-8">
@@ -35,7 +38,7 @@ function Productdetails({ location }) {
               Add to Cart
             </label>
             <div>
-              <input type="number" name="num" id="num" className="mr-2 outline-none text-black" onChange={(e) => setNum(e.target.value)} defaultValue={num} />
+              {/* <input type="number" name="num" id="num" className="mr-2 outline-none text-black" onChange={(e) => setNum(e.target.value)} defaultValue={num} /> */}
               <input
                 type="submit"
                 value="Add to cart"

@@ -1,11 +1,18 @@
-import { BUY_ITEM } from "./cartTypes";
+import { BUY_ITEM } from './cartTypes';
 
-export const addToCart = (name, image, price, items) => {
-  return {
-    type: BUY_ITEM,
-    name,
-    image,
-    price,
-    items,
+export const addToCart = (product) => (dispatch, getState) => {
+  const cartItems = getState().cart
+  cartItems.forEach((x) => {
+    if (x._id === product._id) {
+      alreadyExists = true;
+      x.count++;
+    }
+  });
+  if (!alreadyExists) {
+    cartItems.push({ ...product, count: 1 });
   }
-}
+  dispatch({
+    type: BUY_ITEM,
+    payload: { cartItems },
+  })
+};
