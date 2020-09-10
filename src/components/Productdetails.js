@@ -6,25 +6,39 @@ import { useEffect } from 'react';
 import { addItem } from '../redux/cart/cartUtils';
 
 function Productdetails({ location }) {
-  const [shop, setShop] = useState({});
+  const [added, setAdded] = useState({
+    inCart: false,
+    notify: 'Add to cart'
+  });
+  const [shop, setShop] = useState({
+    name: '',
+    image: '',
+    price: '',
+    id: 0,
+    count: 0
+  });
   const cart = useSelector((state) => state.cart);
   const { state } = location;
   const dispatch = useDispatch();
-  const [num, setNum] = useState(0);
 
-  function add(name, image, price, id, count) {
-    setShop(name, image, price, id, count)
-    dispatch(addToCart(shop))
-  }
-
-  // useEffect(() => {
-  //   setNum(cart[state.id])
-  //   console.log(state, cart[state.id])
-  // }, [])
+  useEffect(() => {
+    const { name, image, price, id, count } = state;
+    setShop({
+      name: name,
+      image: image,
+      price: price,
+      id: id,
+      count: count,
+    });
+  }, [setShop])
 
   function submitToCart(e) {
     e.preventDefault();
-    add(state.name, state.image, state.price, state.id, state.count);
+    dispatch(addToCart(shop));
+    setAdded({
+      inCart: true,
+      notify: 'Added To Cart'
+    })
   }
   return (
     <div className="px-32 py-8 grid grid-cols-2 col-gap-8">
@@ -41,7 +55,8 @@ function Productdetails({ location }) {
               {/* <input type="number" name="num" id="num" className="mr-2 outline-none text-black" onChange={(e) => setNum(e.target.value)} defaultValue={num} /> */}
               <input
                 type="submit"
-                value="Add to cart"
+                value={added.notify}
+                // disabled={added.inCart}
                 className="bg-red-700 m-1 py-1 px-2 text-sm rounded-sm hover:bg-red-900 outline-none shadow-sm"
               />
             </div>
