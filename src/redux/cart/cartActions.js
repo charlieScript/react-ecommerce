@@ -13,26 +13,32 @@ export const addToCart = (product) => (dispatch, getState) => {
   if (!alreadyExists) {
     cart.push({ ...product, count: 1});
   }
+  localStorage.setItem('cart', JSON.stringify(cart))
   dispatch({
     type: ADD_TO_CART,
     payload: cart,
   });
-  calculateCart(cart)
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {
-  let cart = getState().cart.slice();
-  cart = cart.filter(item => item.id === id)
+  const cart = getState().cart.slice();
+  const newCart = cart.filter((i) => i.id !== id);
+  localStorage.setItem('cart', JSON.stringify(newCart));
   dispatch({
       type: REMOVE_FROM_CART,
-      payload: cart
+      payload: newCart
     })
 };
+
+export const fetchFromLocalStorage = () => {
+  const fetch = JSON.parse(localStorage.getItem('cart'))
+  console.log(fetch)
+}
+
 
 function calculateCart(cart) {
   const total =
     cart.length !== 0
       ? cart.reduce((prev, curr) => prev.total + curr.total)
       : null;
-  console.log(total)
 }

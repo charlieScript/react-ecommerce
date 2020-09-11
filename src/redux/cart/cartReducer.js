@@ -80,14 +80,12 @@ const cartReducer = (state = initialItems, action) => {
         ...state,
         index: state.index + 1,
         cart: action.payload,
-        totalPrice: action.total
-      }
+      };
     case REMOVE_FROM_CART: 
       return {
         ...state,
-        index: state.index - 1,
+        index: action.payload.length,
         cart: action.payload,
-        totalPrice: action.total
       }
     default:
       return state;
