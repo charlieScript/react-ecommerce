@@ -30,7 +30,7 @@ function Productdetails({ location }) {
       id: id,
       count: count,
     });
-  }, [setShop])
+  }, [state])
 
   function submitToCart(e) {
     e.preventDefault();

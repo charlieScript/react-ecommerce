@@ -13,8 +13,11 @@ function Cart() {
     const total = cart.length !== 0 && cart.reduce((a, c) => a + c.price * c.count, 0)
     console.log(total)
     setTotal(total)
-    fetchFromLocalStorage()
   }, [cart])
+
+  useEffect(() => {
+    dispatch(fetchFromLocalStorage())
+  }, [dispatch])
   return (
     <div className="px-32 my-6">
       {cart.length !== 0 ? (

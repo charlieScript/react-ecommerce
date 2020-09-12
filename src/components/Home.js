@@ -16,7 +16,7 @@ function Home() {
         <div className="flex justify-between items-center">
           <p>${item.price}</p>
           <Link to={{
-            pathname: `/cart/${item.name}`,
+            pathname: `/products/${item.name}`,
             state: item
           }}
             className="bg-red-700 py-1 px-2 text-sm rounded-sm hover:bg-red-900 outline-none shadow-sm"

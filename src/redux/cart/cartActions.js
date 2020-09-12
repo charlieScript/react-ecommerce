@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './cartTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_FROM_LOCALSTORAGE } from './cartTypes';
 
 export const addToCart = (product) => (dispatch, getState) => {
   const cart = getState().cart.slice();
@@ -13,32 +13,35 @@ export const addToCart = (product) => (dispatch, getState) => {
   if (!alreadyExists) {
     cart.push({ ...product, count: 1});
   }
+  // add to local storage
   localStorage.setItem('cart', JSON.stringify(cart))
   dispatch({
     type: ADD_TO_CART,
     payload: cart,
   });
+  const index = getState().index;
+  localStorage.setItem('index', JSON.stringify(index));
 };
 
 export const removeFromCart = (id) => (dispatch, getState) => {
   const cart = getState().cart.slice();
   const newCart = cart.filter((i) => i.id !== id);
   localStorage.setItem('cart', JSON.stringify(newCart));
+  localStorage.setItem('index', JSON.stringify(newCart.length));
   dispatch({
       type: REMOVE_FROM_CART,
       payload: newCart
     })
 };
 
-export const fetchFromLocalStorage = () => {
+export const fetchFromLocalStorage = () => (dispatch) => {
   const fetch = JSON.parse(localStorage.getItem('cart'))
-  console.log(fetch)
+  const index = JSON.parse(localStorage.getItem('index'))
+  dispatch({
+    type: FETCH_FROM_LOCALSTORAGE,
+    payload: fetch,
+    index: index
+  })
 }
 
 
-function calculateCart(cart) {
-  const total =
-    cart.length !== 0
-      ? cart.reduce((prev, curr) => prev.total + curr.total)
-      : null;
-}

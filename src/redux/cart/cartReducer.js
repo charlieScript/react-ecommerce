@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from './cartTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_FROM_LOCALSTORAGE } from './cartTypes';
 import { addItem, incrementCart } from './cartUtils';
 
 const initialItems = {
@@ -78,7 +78,7 @@ const cartReducer = (state = initialItems, action) => {
     case ADD_TO_CART:
       return {
         ...state,
-        index: state.index + 1,
+        index: action.payload.length,
         cart: action.payload,
       };
     case REMOVE_FROM_CART: 
@@ -86,6 +86,12 @@ const cartReducer = (state = initialItems, action) => {
         ...state,
         index: action.payload.length,
         cart: action.payload,
+      }
+    case FETCH_FROM_LOCALSTORAGE: 
+      return {
+        ...state,
+        index: action.index,
+        cart: action.payload
       }
     default:
       return state;

@@ -1,9 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchFromLocalStorage } from '../redux/cart/cartActions';
+
 
 const Header = () => {
+  const dispatch = useDispatch()
   const items = useSelector(state => state.index)
+  useEffect(() => {
+    dispatch(fetchFromLocalStorage());
+  }, [dispatch]);
   return (
     <div className="px-32 bg-indigo-600 py-3 flex justify-between items-center">
       <Link to="/">
@@ -22,9 +28,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// const mapStateToProps = (state) => ({
-
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Header)
