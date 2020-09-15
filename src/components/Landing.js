@@ -2,38 +2,75 @@ import React from 'react';
 
 function Landing() {
   return (
-    <section className="text-gray-700 body-font">
-      <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-          <img
-            className="object-cover object-center rounded"
-            alt="hero"
-            src="https://dummyimage.com/720x600"
-          />
-        </div>
-        <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-            <span className="text-5xl">Econnext Online Store</span>
-            <br className="hidden lg:inline-block" />
-            <span className="text-md block">Home For High Quality Shoes</span>
-          </h1>
-          <p className="mb-8 leading-relaxed">
-            Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-            plant cold-pressed tacos poke beard tote bag. Heirloom echo park
-            mlkshk tote bag selvage hot chicken authentic tumeric truffaut
-            hexagon try-hard chambray.
-          </p>
-          <div className="flex justify-center">
-            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              Button
-            </button>
-            <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">
-              Button
-            </button>
+    <div>
+      <section
+        className="w-full mx-auto bg-nordic-gray-light flex pt-12 md:pt-0 md:items-center bg-cover bg-right h-mobile items-center justify-center"
+        style={{
+          maxWidth: '1600px',
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1533090161767-e6ffed986c88?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjM0MTM2fQ&auto=format&fit=crop&w=1600&q=80')",
+        }}
+      >
+        <div className="container mx-auto">
+          <div className="flex w-full px-6 tracking-wide">
+            <h1 className="text-gray-900 text-2xl sm:text-5xl my-4 text-center sm:ml-56">
+              Welcome To Nocturnal Online Store
+            </h1>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* products  */}
+      <section className="bg-white py-8">
+        <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+
+          {/* nav */}
+          <nav id="store" className="w-full z-30 top-0 px-6 py-1">
+            <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
+              <p
+                className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+              >
+                Featured Products
+              </p>
+
+              <div className="flex items-center" id="store-nav-content">
+                <a
+                  className="pl-3 inline-block no-underline hover:text-black"
+                  href="#"
+                >
+                  <svg
+                    className="fill-current hover:text-black"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
+                  </svg>
+                </a>
+
+                <a
+                  className="pl-3 inline-block no-underline hover:text-black"
+                  href="#"
+                >
+                  <svg
+                    className="fill-current hover:text-black"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </nav>
+
+
+        </div>
+      </section>
+    </div>
   );
 }
 
