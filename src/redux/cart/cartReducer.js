@@ -1,5 +1,4 @@
 import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_FROM_LOCALSTORAGE } from './cartTypes';
-import { addItem, incrementCart } from './cartUtils';
 
 const initialItems = {
   totalPrice: 0,

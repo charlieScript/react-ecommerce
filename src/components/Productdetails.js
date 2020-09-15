@@ -1,9 +1,8 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cart/cartActions';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { addItem } from '../redux/cart/cartUtils';
 
 function Productdetails({ location }) {
   const [added, setAdded] = useState({
@@ -17,7 +16,6 @@ function Productdetails({ location }) {
     id: 0,
     count: 0
   });
-  const cart = useSelector((state) => state.cart);
   const { state } = location;
   const dispatch = useDispatch();
 

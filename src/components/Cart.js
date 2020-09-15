@@ -11,7 +11,6 @@ function Cart() {
   }
   useEffect(() => {
     const total = cart.length !== 0 && cart.reduce((a, c) => a + c.price * c.count, 0)
-    console.log(total)
     setTotal(total)
   }, [cart])
 
