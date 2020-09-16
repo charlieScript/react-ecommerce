@@ -15,7 +15,8 @@ function Cart() {
   }, [cart])
 
   useEffect(() => {
-    dispatch(fetchFromLocalStorage())
+    dispatch(fetchFromLocalStorage());
+
   }, [dispatch])
   return (
     <div className="px-32 my-6">
@@ -32,7 +33,11 @@ function Cart() {
             
           </div>
         ))
-      ): 'No item added'}
+      ): (
+        <div className='mt-32'>
+          <p className="text-center font-bold text-black">You Have Not Added Any Product To Your Cart</p>
+        </div>
+      )}
       <p>Total: {total}</p>
     </div>
   );

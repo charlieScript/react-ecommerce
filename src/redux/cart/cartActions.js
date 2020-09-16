@@ -1,20 +1,24 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, FETCH_FROM_LOCALSTORAGE } from './cartTypes';
+import {
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+  FETCH_FROM_LOCALSTORAGE,
+} from './cartTypes';
 
-export const addToCart = (product) => (dispatch, getState) => {
+export const addToCart = (product, newCount) => (dispatch, getState) => {
   const cart = getState().cart.slice();
   let alreadyExists = false;
   cart.forEach((x) => {
     if (x.id === product.id) {
       alreadyExists = true;
-      x.count++;
-      x.total = x.count * x.price;
+      x.count = newCount
+      // x.total = x.count * x.price;
     }
   });
   if (!alreadyExists) {
-    cart.push({ ...product, count: 1});
+    cart.push({ ...product, count: newCount });
   }
   // add to local storage
-  localStorage.setItem('cart', JSON.stringify(cart))
+  localStorage.setItem('cart', JSON.stringify(cart));
   dispatch({
     type: ADD_TO_CART,
     payload: cart,
@@ -29,19 +33,21 @@ export const removeFromCart = (id) => (dispatch, getState) => {
   localStorage.setItem('cart', JSON.stringify(newCart));
   localStorage.setItem('index', JSON.stringify(newCart.length));
   dispatch({
-      type: REMOVE_FROM_CART,
-      payload: newCart
-    })
+    type: REMOVE_FROM_CART,
+    payload: newCart,
+  });
 };
 
 export const fetchFromLocalStorage = () => (dispatch) => {
-  const fetch = JSON.parse(localStorage.getItem('cart'))
-  const index = JSON.parse(localStorage.getItem('index'))
-  dispatch({
-    type: FETCH_FROM_LOCALSTORAGE,
-    payload: fetch,
-    index: index
-  })
-}
-
-
+  const fetch = JSON.parse(localStorage.getItem('cart'));
+  const index = JSON.parse(localStorage.getItem('index'));
+  if (fetch === null && index === null) {
+    return;
+  } else {
+    dispatch({
+      type: FETCH_FROM_LOCALSTORAGE,
+      payload: fetch,
+      index: index,
+    });
+  }
+};

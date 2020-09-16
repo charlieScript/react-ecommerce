@@ -46,11 +46,11 @@ const Header = () => {
           <nav>
             <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
               <li>
-                <a
+                <Link to='/store'
                   className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
                 >
-                  Shop
-                </a>
+                  Store
+                </Link>
               </li>
               <li>
                 <a
@@ -62,15 +62,6 @@ const Header = () => {
             </ul>
           </nav>
         </div>
-
-        {/* <!-- <div className="hidden fixed right-0 top-0 max-w-xs w-full h-64  px-6 py-4 transition duration-300 transhtmlForm overflow-y-auto bg-white border-l-2 border-gray-300 z-50" id="menu">
-                <nav>
-                    <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
-                        <li><a className="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">Shop</a></li>
-                        <li><a className="inline-block no-underline hover:text-black hover:underline py-2 px-4" href="#">About</a></li>
-                    </ul>
-                </nav>
-            </div> --> */}
 
         <div className="order-1 md:order-2">
           <Link to='/'
@@ -90,7 +81,7 @@ const Header = () => {
         </div>
 
         <div className="order-2 md:order-3 flex items-center" id="nav-content">
-          <a className="inline-block no-underline hover:text-black">
+          <Link to='/user' className="inline-block no-underline hover:text-black">
             <svg
               className="fill-current hover:text-black"
               xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +92,7 @@ const Header = () => {
               <circle fill="none" cx="12" cy="7" r="3" />
               <path d="M12 2C9.243 2 7 4.243 7 7s2.243 5 5 5 5-2.243 5-5S14.757 2 12 2zM12 10c-1.654 0-3-1.346-3-3s1.346-3 3-3 3 1.346 3 3S13.654 10 12 10zM21 21v-1c0-3.859-3.141-7-7-7h-4c-3.86 0-7 3.141-7 7v1h2v-1c0-2.757 2.243-5 5-5h4c2.757 0 5 2.243 5 5v1H21z" />
             </svg>
-          </a>
+          </Link>
 
           <Link to='/cart'
             className="pl-3 inline-block no-underline hover:text-black relative"
@@ -109,11 +100,11 @@ const Header = () => {
             <span
               className="absolute p-1 rounded-full text-md top-0"
               style={{
-                right: '-10px',
+                right: '-13px',
                 top: '-10px'
               }}
             >
-              1
+              {items}
             </span>
             <svg
               className="fill-current hover:text-black"
