@@ -46,25 +46,25 @@ const Header = () => {
           <nav>
             <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
               <li>
-                <Link to='/store'
+                <Link
+                  to="/store"
                   className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
                 >
                   Store
                 </Link>
               </li>
               <li>
-                <a
-                  className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
-                >
+                <p className="inline-block no-underline hover:text-black hover:underline py-2 px-4">
                   About
-                </a>
+                </p>
               </li>
             </ul>
           </nav>
         </div>
 
         <div className="order-1 md:order-2">
-          <Link to='/'
+          <Link
+            to="/"
             className="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
           >
             <svg
@@ -81,7 +81,10 @@ const Header = () => {
         </div>
 
         <div className="order-2 md:order-3 flex items-center" id="nav-content">
-          <Link to='/user' className="inline-block no-underline hover:text-black">
+          <Link
+            to="/user"
+            className="inline-block no-underline hover:text-black"
+          >
             <svg
               className="fill-current hover:text-black"
               xmlns="http://www.w3.org/2000/svg"
@@ -94,14 +97,15 @@ const Header = () => {
             </svg>
           </Link>
 
-          <Link to='/cart'
+          <Link
+            to="/cart"
             className="pl-3 inline-block no-underline hover:text-black relative"
           >
             <span
               className="absolute p-1 rounded-full text-md top-0"
               style={{
                 right: '-13px',
-                top: '-10px'
+                top: '-10px',
               }}
             >
               {items}

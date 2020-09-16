@@ -9,14 +9,14 @@ function Landing() {
   const items = useSelector((state) => state.items);
   useEffect(() => {
     setProducts(items.slice(0, 4));
-  }, []);
+  }, [items]);
   const productList =
     products.length &&
     products.map((i, index) => (
       <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col" key={index}>
         <Link
           to={{
-            pathname: `/products/${i.id}`,
+            pathname: `/product/${i.id}`,
             state: i,
           }}
         >
@@ -77,7 +77,7 @@ function Landing() {
               </p>
 
               <div className="flex items-center" id="store-nav-content">
-                <a
+                <p
                   className="pl-3 inline-block no-underline hover:text-black"
                   href="#"
                 >
@@ -90,9 +90,9 @@ function Landing() {
                   >
                     <path d="M7 11H17V13H7zM4 7H20V9H4zM10 15H14V17H10z" />
                   </svg>
-                </a>
+                </p>
 
-                <a
+                <p
                   className="pl-3 inline-block no-underline hover:text-black"
                   href="#"
                 >
@@ -105,7 +105,7 @@ function Landing() {
                   >
                     <path d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
                   </svg>
-                </a>
+                </p>
               </div>
             </div>
           </nav>

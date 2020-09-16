@@ -24,7 +24,7 @@ function App() {
             <Route exact path='/user' component={User} />
             <Route exact path='/products' component={Home} />
             <Route exact path='/cart' component={Cart} />
-            <Route exact path='/products/:id' component={Productdetails} />
+            <Route exact path='/product/:id' component={Productdetails} />
             <Footer />
           </div>
         </Provider>

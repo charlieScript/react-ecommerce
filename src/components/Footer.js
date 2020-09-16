@@ -20,7 +20,7 @@ function Footer() {
                 <li>
                   <a
                     className="inline-block no-underline hover:text-black hover:underline py-1"
-                    href="#"
+                    href="/"
                   >
                     Add social links
                   </a>
