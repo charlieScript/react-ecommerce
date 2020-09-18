@@ -10,19 +10,6 @@ const Header = () => {
     dispatch(fetchFromLocalStorage());
   }, [dispatch]);
   return (
-    // <div className="px-32 bg-indigo-600 py-3 flex justify-between items-center">
-    //   <Link to="/">
-    //     <h1 className="text-xl">
-    //       ECONNEXT{' '}
-    //       <i className="fa fa-rocket"></i>
-    //     </h1>
-    //   </Link>
-    //   <Link to='/cart'>Cart
-    //     <i className="fa fa-shopping-cart"></i>
-    //     {'  '}
-    //     <span className="py-1 px-2 bg-red-300 rounded-lg text-black">{items}</span>
-    //   </Link>
-    // </div>
     <nav id="header" className="w-full z-30 top-0 py-1 fixed bg-gray-100">
       <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
         <label htmlFor="menu-toggle" className="cursor-pointer md:hidden block">
@@ -102,9 +89,9 @@ const Header = () => {
             className="pl-3 inline-block no-underline hover:text-black relative"
           >
             <span
-              className="absolute p-1 rounded-full text-md top-0"
+              className="absolute p-1 rounded-full text-md text-white top-0 bg-red-600"
               style={{
-                right: '-13px',
+                right: '-17px',
                 top: '-10px',
               }}
             >
