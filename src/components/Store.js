@@ -1,16 +1,17 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 function Store() {
-  const store = useSelector(state => state.items)
+  const store = useSelector(state => state.products)
   const storeList =
     store.length &&
     store.map((i, index) => (
       <div className="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col" key={index}>
         <Link
           to={{
-            pathname: `/product/${i.id}`,
+            pathname: `/product/${i._id}`,
             state: i,
           }}
         >

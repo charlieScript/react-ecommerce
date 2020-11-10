@@ -11,6 +11,7 @@ import Landing from './components/Landing';
 import Footer from './components/Footer';
 import Store from './components/Store';
 import User from './components/User';
+// import Test from './components/Test'
 
 function App() {
   return (
@@ -18,13 +19,13 @@ function App() {
       <Switch>
         <Provider store={store}>
           <div className="App">
-            <Header />
+            <Header />  
             <Route exact path='/' component={Landing} />
-            <Route exact path='/store' component={Store} />
-            <Route exact path='/user' component={User} />
-            <Route exact path='/products' component={Home} />
-            <Route exact path='/cart' component={Cart} />
-            <Route exact path='/product/:id' component={Productdetails} />
+            <Route exact path="/store" component={Store} />
+            <Route exact path="/user" component={User} />
+            <Route exact path="/products" component={Home} />
+            <Route exact path="/cart" component={Cart} />
+            <Route exact path="/product/:id" component={Productdetails} />
             <Footer />
           </div>
         </Provider>

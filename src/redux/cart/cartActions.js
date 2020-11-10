@@ -10,7 +10,7 @@ export const addToCart = (product, newCount) => (dispatch, getState) => {
   cart.forEach((x) => {
     if (x.id === product.id) {
       alreadyExists = true;
-      x.count = newCount
+      x.count = newCount;
       // x.total = x.count * x.price;
     }
   });
@@ -51,3 +51,4 @@ export const fetchFromLocalStorage = () => (dispatch) => {
     });
   }
 };
+
