@@ -1,10 +1,9 @@
-import React from 'react'
-import { useEffect } from 'react';
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Store() {
-  const store = useSelector(state => state.products)
+  const store = useSelector((state) => state.products);
   const storeList =
     store.length &&
     store.map((i, index) => (
@@ -83,4 +82,4 @@ function Store() {
   );
 }
 
-export default Store
+export default Store;

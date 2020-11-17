@@ -18,7 +18,7 @@ function Landing() {
         setProducts(res);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [dispatch]);
 
   const productList =
     products.length &&
