@@ -2,7 +2,9 @@ import {
   ADD_TO_CART,
   REMOVE_FROM_CART,
   FETCH_FROM_LOCALSTORAGE,
+  FETCH_FROM_DATABASE,
 } from './cartTypes';
+import axios from 'axios';
 
 export const addToCart = (product, newCount) => (dispatch, getState) => {
   const cart = getState().cart.slice();
@@ -52,3 +54,12 @@ export const fetchFromLocalStorage = () => (dispatch) => {
   }
 };
 
+// GET ALL THE PRODUCTS FROM DATATBASE
+export const fetchFromDatabase = () => (dispatch) => {
+  axios.get('http://localhost:5000/products').then((res) => {
+    dispatch({
+      type: FETCH_FROM_DATABASE,
+      payload: res.data,
+    });
+  });
+};

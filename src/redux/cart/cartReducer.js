@@ -12,16 +12,12 @@ const initialItems = {
   cart: [],
 };
 
-const newState = {
-  products: {},
-};
-
-const cartReducer = (state = newState, action) => {
+const cartReducer = (state = initialItems, action) => {
   switch (action.type) {
     case FETCH_FROM_DATABASE:
       return {
         ...state,
-        products: action.payload,
+        items: action.payload,
       };
     case ADD_TO_CART:
       return {

@@ -5,21 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 function Landing() {
-  const [products, setProducts] = useState([]);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    fetch('http://localhost:3001/products')
-      .then((res) => res.json())
-      .then((res) => {
-        dispatch({
-          type: 'FETCH_FROM_DATABASE',
-          payload: res,
-        });
-        setProducts(res);
-      })
-      .catch((err) => console.log(err));
-  }, [dispatch]);
-
+  const products = useSelector((state) => state.items);
   const productList =
     products.length &&
     products.map((i, index) => (

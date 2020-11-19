@@ -1,9 +1,9 @@
-const tailwindcss = require('tailwindcss');
+const tailwindcss = require('tailwindcss/tailwind.config');
 const purgecss = require('@fullhuman/postcss-purgecss');
 
 module.exports = {
   plugins: [
-    tailwindcss('./tailwind.config.js'),
+    tailwindcss,
     require('autoprefixer'),
     purgecss({
       // Specify the paths to all of the template files in your project
