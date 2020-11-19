@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/tailwindcss/init.css -o src/index.css",
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "2.3.0",
     "autoprefixer": "9.8.6",
-    "postcss-cli": "7.1.1",
+    "postcss-cli": "8.3.0",
     "tailwindcss": "^2.0.1"
   }
 }
