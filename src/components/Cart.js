@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 function Cart() {
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
-  const cart = useSelector((state) => state.cart);
+  const cart = useSelector((state) => state.auth.cart);
   function deleteItem(id) {
     dispatch(removeFromCart(id));
   }
@@ -19,9 +19,9 @@ function Cart() {
     setTotal(total);
   }, [cart]);
 
-  useEffect(() => {
-    dispatch(fetchFromLocalStorage());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchFromLocalStorage());
+  // }, [dispatch]);
   return (
     <div className="sm:px-32 mt-24 mb-10">
       <h1 className="text-2xl ml-6 text-black">Cart</h1>

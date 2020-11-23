@@ -14,6 +14,8 @@ const initialState = {
   isAuthenticated: null,
   isLoading: false,
   user: null,
+  cart: [],
+  index: 0
 };
 
 const authReducer = (state = initialState, action) => {
@@ -24,11 +26,15 @@ const authReducer = (state = initialState, action) => {
         isLoading: true,
       };
     case USER_LOADED:
+      localStorage.setItem('cart', JSON.stringify(action.payload.user.cart));
+      localStorage.setItem('index', JSON.stringify(action.payload.user.index));
       return {
         ...state,
         isAuthenticated: true,
         isLoading: false,
         user: action.payload,
+        cart: action.payload.user.cart,
+        index: action.payload.user.index
       };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:

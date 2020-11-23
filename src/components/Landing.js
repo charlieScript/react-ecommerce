@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 function Landing() {
-  const products = useSelector((state) => state.items);
+  const products = useSelector((state) => state.cart.items);
   const productList =
     products.length &&
     products.map((i, index) => (

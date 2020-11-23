@@ -13,12 +13,17 @@ import Store from './components/Store';
 import User from './components/User';
 import { useEffect } from 'react';
 import { fetchFromDatabase } from './redux/cart/cartActions';
+import { loadUser } from './redux/cart/authActions';
+import Auth from './components/Auth'
+import Login from './components/Login';
+
 // import Test from './components/Test'
 
 function App() {
   // load from database once components loads
   useEffect(() => {
     store.dispatch(fetchFromDatabase());
+    store.dispatch(loadUser())
   }, []);
   return (
     <Router>
@@ -26,9 +31,11 @@ function App() {
         <Provider store={store}>
           <div className="App">
             <Header />
+            {/* <Auth exact path="/user" component={User} /> */}
             <Route exact path="/" component={Landing} />
-            <Route exact path="/store" component={Store} />
             <Route exact path="/user" component={User} />
+            <Route exact path="/store" component={Store} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={Home} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/product/:id" component={Productdetails} />
