@@ -9,26 +9,31 @@ import { tokenConfig } from './authActions';
 
 export const addToCart = (product, newCount) => (dispatch, getState) => {
   const cart = getState().auth.cart.slice();
-  let alreadyExists = false;
-  cart.forEach((x) => {
-    if (x.id === product.id) {
-      alreadyExists = true;
-      x.count = newCount;
-      // x.total = x.count * x.price;
-    }
-  });
-  if (!alreadyExists) {
-    cart.push({ ...product, count: newCount });
-  }
+  // let alreadyExists = false;
+  // cart.forEach((x) => {
+  //   if (x.id === product.id) {
+  //     alreadyExists = true;
+  //     x.count = newCount;
+  //     // x.total = x.count * x.price;
+  //   }
+  // });
+  // if (!alreadyExists) {
+  //   cart.push({ ...product, count: newCount });
+  // }
   // add to local storage
-  localStorage.setItem('cart', JSON.stringify(cart));
-  axios.post('http://localhost/profile/addtocart', cart, tokenConfig(getState))
-    .then(res => dispatch({
-    type: ADD_TO_CART,
-    payload: res.data.cart,
-  }))
-  .catch(err => console.log('error!!'))
-  ;
+  // localStorage.setItem('cart', JSON.stringify(cart));
+  axios
+    .post('http://localhost/profile/addtocart', {
+      
+    }, tokenConfig(getState))
+    .then((res) => {
+      // dispatch({
+      //   type: ADD_TO_CART,
+      //   payload: res.data.cart,
+      // });
+      console.log(res)
+    })
+    .catch((err) => console.log('error!!'));
   const index = getState().index;
   localStorage.setItem('index', JSON.stringify(index));
 };

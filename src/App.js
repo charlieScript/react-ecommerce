@@ -31,9 +31,9 @@ function App() {
         <Provider store={store}>
           <div className="App">
             <Header />
-            {/* <Auth exact path="/user" component={User} /> */}
+            <Auth exact path="/user" component={User} />
             <Route exact path="/" component={Landing} />
-            <Route exact path="/user" component={User} />
+            {/* <Route exact path="/user" component={User} /> */}
             <Route exact path="/store" component={Store} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/products" component={Home} />

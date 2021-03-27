@@ -29,11 +29,12 @@ function Login(props) {
 
   const formSubmit = (e) => {
     dispatch(login(form));
+    props.history.push('/user')
     e.preventDefault();
     if ((error.msg === 'User not found')) {
       setErr(true)
     }
-    console.log(error.msg)
+    // console.log(error.msg)
   };
   return (
     <section className="text-gray-700 body-font">

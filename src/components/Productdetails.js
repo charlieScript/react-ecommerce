@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cart/cartActions';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import axios from 'axios'
 
 function Productdetails({ location }) {
   const [notify, setNotify] = useState({
@@ -44,7 +45,23 @@ function Productdetails({ location }) {
 
   function submitToCart() {
     // dispatch to redux
-    dispatch(addToCart(shop, shop.count));
+    // dispatch(addToCart(shop, shop.count));
+    const config = {
+      headers: {
+        'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token')
+      },
+    };
+    axios
+      .post('http://localhost/profile/addtocart', JSON.stringify(shop), config)
+      .then((res) => {
+        // dispatch({
+        //   type: ADD_TO_CART,
+        //   payload: res.data.cart,
+        // });
+        console.log(res);
+      })
+      .catch((err) => console.log('error!!'));
     //set notifuaction
     setNotify({
       color: 'red',
